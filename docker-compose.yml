@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  gateway:
+    build: ./gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - auth-service
+      - user-service
+      - destination-service
+      - booking-service
+      - recommendation-service
+      - notification-service
+
+  auth-service:
+    build: ./services/auth-service
+    ports:
+      - "5001:5001"
+
+  user-service:
+    build: ./services/user-service
+    ports:
+      - "5002:5002"
+
+  destination-service:
+    build: ./services/destination-service
+    ports:
+      - "5003:5003"
+
+  booking-service:
+    build: ./services/booking-service
+    ports:
+      - "5004:5004"
+
+  recommendation-service:
+    build: ./services/recommendation-service
+    ports:
+      - "5005:5005"
+
+  notification-service:
+    build: ./services/notification-service
+    ports:
+      - "5006:5006"
